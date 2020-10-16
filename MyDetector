@@ -16,7 +16,7 @@
 using namespace CLHEP;
 
 G4VPhysicalVolume* MyDetector::Construct(){
-
+    //Find material
     auto lAr = G4NistManager::Instance()->FindOrBuildMaterial("G4_lAr");
     auto al = G4NistManager::Instance()->FindOrBuildMaterial("G4_Al");
     auto ca = G4NistManager::Instance()->FindOrBuildMaterial("G4_Ca");
