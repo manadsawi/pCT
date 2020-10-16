@@ -16,7 +16,7 @@
 using namespace CLHEP;
 
 G4VPhysicalVolume* MyDetector::Construct(){
-
+    // Find Material 
     auto lAr = G4NistManager::Instance()->FindOrBuildMaterial("G4_lAr");
     auto al = G4NistManager::Instance()->FindOrBuildMaterial("G4_Al");
     auto ca = G4NistManager::Instance()->FindOrBuildMaterial("G4_Ca");
@@ -26,6 +26,9 @@ G4VPhysicalVolume* MyDetector::Construct(){
     auto ssteel = G4NistManager::Instance()->FindOrBuildMaterial("G4_STAINLESS-STEEL");
 
     // World volume
+    //G4Box("Name of box",sizeX,sizeY,sizeZ); Create BOX
+    //G4LogicalVolume("variable of box", Material, "Create Name of Logical"); Create material of box
+    //G4PVPlacement(rotation, vector position, "variable of Logical", "Create Name of World", 0, false, 0); Create Box in world position
     auto worldBox = new G4Box("worldBox", 0.5*m, 0.5*m, 0.5*m); 
     auto logicalWorld = new G4LogicalVolume(worldBox, air, "LogicalWorld");
     auto physicalWorld = new G4PVPlacement(0, {0,0,0}, logicalWorld, "World", 0, false, 0);
